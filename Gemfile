@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # 認證系統
 gem 'devise'
+gem 'pundit'
 
 # bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'
