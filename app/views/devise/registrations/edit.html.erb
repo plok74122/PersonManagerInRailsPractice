@@ -9,6 +9,11 @@
     </div>
 
     <div class="field">
+      <div><%= f.label :group %><br/>
+        <%= f.text_field :group %></div>
+    </div>
+
+    <div class="field">
       <%= f.label :email %><br/>
       <%= f.email_field :email, autofocus: true %>
     </div>
@@ -34,7 +39,7 @@
 
     <div class="actions">
       <%= f.label :group %> <br/>
-      <%= f.select :group , Group.all.collect {|g| [g.grouptype , g.grouptype] } , :selected => f.group, include_blank: true %>
+      <%= f.select :group , Group.all.collect {|g| [g.grouptype , g.grouptype] } , :selected => params[:group], include_blank: true %>
 
     </div>
 
