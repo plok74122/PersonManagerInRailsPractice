@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311071351) do
+ActiveRecord::Schema.define(version: 20160312030845) do
+
+  create_table "groups", force: :cascade do |t|
+    t.string "grouptype"
+  end
+
+  add_index "groups", ["id"], name: "index_groups_on_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
