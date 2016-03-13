@@ -1,0 +1,30 @@
+<div class="container">
+  <%= form_for @course, :method => 'post' , :url => course_index_path do |f| %>
+      <div class="row">
+        <div class='col-sm-6'>
+          <div class="form-group">
+            <%= f.label :course_name, "課程名稱" %>
+            <%= f.text_field :course_name, 'class' => 'form-control' %>
+
+            <%= f.label :group, "班別" %><br/>
+            <%= f.select :group , Group.all.collect {|g| [g.grouptype , g.grouptype] } ,{:selected => '', include_blank: true }, {'class' => 'form-control'}%>
+
+
+            <%= f.label :start, "課程起始時間" %>
+            <%= f.text_field :start,'class' => 'form-control' %>
+
+            <%= f.label :end, "課程結束時間" %>
+            <%= f.text_field :end ,'class' => 'form-control'%>
+
+            <%= f.submit "Create" , 'class' => 'btn btn-danger' %>
+  <% end %>
+
+
+
+
+  <script type="text/javascript">
+    $(function () {
+      $('#course_start').datetimepicker({format: 'YYYY/MM/DD HH:SS'});
+      $('#course_end').datetimepicker({format: 'YYYY/MM/DD HH:SS'});
+    });
+  </script>
