@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312053745) do
+ActiveRecord::Schema.define(version: 20160314071704) do
+
+  create_table "check_in_lists", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "check_in_lists", ["id"], name: "index_check_in_lists_on_id"
 
   create_table "courses", force: :cascade do |t|
     t.string   "course_name"
