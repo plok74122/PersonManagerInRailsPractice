@@ -1,13 +1,16 @@
 class CourseController < ApplicationController
-  before_action :set_course, :only => [ :show, :edit, :update, :destroy]
-  def index
+  before_action :set_course, :only => [:show, :edit, :update, :destroy]
 
+  def index
+    @course = Course.all;
   end
+
   def create
     @course = Course.new(course_params)
     @course.save()
     redirect_to :action => :index
   end
+
   def new
     @course = Course.new
   end

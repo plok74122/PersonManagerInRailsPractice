@@ -1,0 +1,26 @@
+<ul>
+  <table class="table table-striped">
+    <th>名稱</th>
+    <th>類型</th>
+    <th>開始時間</th>
+    <th>結束時間</th>
+    <th>Query</th>
+    <th>Delete</th>
+    <% @course.each do |course| %>
+        <tr>
+          <td><%= course.course_name %></td>
+          <td><%= course.group %></td>
+          <td><%= course.start %></td>
+          <td><%= course.end %></td>
+          <td><%= link_to '查詢人員', course_dashboard_path(course) , 'class'=>'btn btn-default'%></td>
+          <td>
+            <%= form_for course, :method => 'DELETE' , :url => course_path(course)  do |f| %>
+                <%= f.hidden_field :id %>
+                <%= f.submit "Delete" , 'class' => 'btn btn-danger' %>
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+  </table>
+
+</ul>
