@@ -24,7 +24,8 @@ class CourseController < ApplicationController
   end
 
   def destroy
-    # code here
+    @course.destroy
+    redirect_to :action => :index
   end
 
   def update
