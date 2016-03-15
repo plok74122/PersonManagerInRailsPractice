@@ -5,9 +5,17 @@ class CheckInListController < ApplicationController
     @check_in_list = Course.all
   end
   def check_in
-    @course = Course.find(course_params[:id])
-    CheckInList.create(:user => current_user , :course => @course)
-    # CheckInList.create(:user => current_user , :course_id => course_params[:id])
+    # 查出該課程的資料
+    # 確認該課程是否重複點名
+    check_in_exist = current_user.course.where('course_id = ?',course_params[:id])
+    if check_in_exist.size == 1
+      flash[:notice] = '已經Check In過摟～'
+    else
+      flash[:notice] ='Check In Success'
+      # CheckInList.create(:user => current_user , :course => course)
+      CheckInList.create(:user => current_user , :course_id => course_params[:id])
+    end
+    redirect_to course_index_path
   end
 
   private
