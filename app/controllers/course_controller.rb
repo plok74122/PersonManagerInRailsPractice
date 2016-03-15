@@ -3,7 +3,7 @@ class CourseController < ApplicationController
   before_action :set_course, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @course = Course.show_can_check_in_course
+    @course = Course.show_can_check_in_course.includes(:group)
   end
 
   def create
