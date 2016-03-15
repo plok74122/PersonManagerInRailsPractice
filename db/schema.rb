@@ -20,11 +20,9 @@ ActiveRecord::Schema.define(version: 20160314071704) do
     t.datetime "updated_at"
   end
 
-  add_index "check_in_lists", ["id"], name: "index_check_in_lists_on_id"
-
   create_table "courses", force: :cascade do |t|
     t.string   "course_name"
-    t.string   "group"
+    t.integer  "group_id"
     t.datetime "start"
     t.datetime "end"
     t.datetime "created_at",  null: false
@@ -34,8 +32,6 @@ ActiveRecord::Schema.define(version: 20160314071704) do
   create_table "groups", force: :cascade do |t|
     t.string "grouptype"
   end
-
-  add_index "groups", ["id"], name: "index_groups_on_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -51,7 +47,7 @@ ActiveRecord::Schema.define(version: 20160314071704) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "username"
-    t.string   "group"
+    t.integer  "group_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

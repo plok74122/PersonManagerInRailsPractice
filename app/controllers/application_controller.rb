@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :username
     devise_parameter_sanitizer.for(:account_update) << :username
-    devise_parameter_sanitizer.for(:sign_up) << :group
-    devise_parameter_sanitizer.for(:account_update) << :group
+    devise_parameter_sanitizer.for(:sign_up) << :group_id
+    devise_parameter_sanitizer.for(:account_update) << :group_id
   end
 end

@@ -10,7 +10,7 @@
     <% @course.each do |course| %>
         <tr>
           <td><%= course.course_name %></td>
-          <td><%= course.group %></td>
+          <td><%= course.group_id %></td>
           <td><%= course.start %></td>
           <td><%= course.end %></td>
           <td><%= link_to '查詢人員', course_dashboard_path(course) , 'class'=>'btn btn-default'%></td>

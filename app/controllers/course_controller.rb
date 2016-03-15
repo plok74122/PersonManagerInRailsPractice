@@ -3,7 +3,7 @@ class CourseController < ApplicationController
   before_action :set_course, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @course = Course.all;
+    @course = Course.show_can_check_in_course
   end
 
   def create
@@ -33,6 +33,10 @@ class CourseController < ApplicationController
     # code here
   end
 
+  def dashboard
+
+  end
+
   private
 
   def set_course
@@ -40,6 +44,6 @@ class CourseController < ApplicationController
   end
 
   def course_params
-    params.require(:course).permit(:course_name, :group, :start, :end)
+    params.require(:course).permit(:course_name, :group_id, :start, :end)
   end
 end

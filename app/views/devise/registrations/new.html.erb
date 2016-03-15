@@ -27,8 +27,8 @@
     </div>
 
     <div class="field">
-      <%= f.label :group %><br/>
-      <%= f.select :group , Group.all.collect {|g| [g.grouptype , g.grouptype] } , :selected => '', include_blank: true %>
+      <%= f.label :group_id %><br/>
+      <%= f.select :group_id , Group.all.collect {|g| [g.grouptype , g.id] } , :selected => '', include_blank: true %>
     </div>
 
     <div class="actions">

@@ -2,7 +2,7 @@ class CreateCourses < ActiveRecord::Migration
   def change
     create_table :courses do |t|
       t.string :course_name
-      t.string :group
+      t.integer :group_id
       t.datetime :start
       t.datetime :end
 
