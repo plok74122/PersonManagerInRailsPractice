@@ -4,5 +4,6 @@ class CreateGroups < ActiveRecord::Migration
       t.index :id
       t.string :grouptype
     end
+    add_index
   end
 end

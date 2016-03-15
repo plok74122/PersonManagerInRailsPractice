@@ -1,0 +1,16 @@
+<table class="table table-striped">
+  <th>名稱</th>
+  <th>類型</th>
+  <th>開始時間</th>
+  <th>結束時間</th>
+  <th>Query</th>
+  <% @check_in_list.each do |list| %>
+  <tr>
+    <td><%= list.id %></td>
+    <td><%= list.course_name %></td>
+    <td><%= list.group %></td>
+    <td><%= list.start %></td>
+    <td><%= list.end %></td>
+  </tr>
+  <% end %>
+</table>

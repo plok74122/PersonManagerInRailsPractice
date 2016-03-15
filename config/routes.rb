@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :course do
     get :dashboard
   end
+  resources :check_in_list do
+    post :check_in
+  end
   # resource devise;
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
