@@ -5,7 +5,9 @@ class CheckInListController < ApplicationController
     @check_in_list = Course.all
   end
   def check_in
-    CheckInList.create(:user => current_user , :course_id => course_params[:id])
+    @course = Course.find(course_params[:id])
+    CheckInList.create(:user => current_user , :course => @course)
+    # CheckInList.create(:user => current_user , :course_id => course_params[:id])
   end
 
   private
