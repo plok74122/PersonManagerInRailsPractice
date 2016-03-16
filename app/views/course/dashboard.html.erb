@@ -1,0 +1,15 @@
+<table class="table table-striped">
+  <th>人名</th>
+  <th>簽到時間</th>
+  <% @all_users_should_check_in.each do |all_users_show_check_in| %>
+      <tr>
+        <td><%= all_users_show_check_in.username %></td>
+        <% if @all_check_in_users_id_hash[all_users_show_check_in.id] == nil %>
+            <td>未簽到</td>
+        <% else %>
+            <td><%= @all_check_in_users_time[@all_check_in_users_id_hash[all_users_show_check_in.id]] %></td>
+        <% end %>
+      </tr>
+
+  <% end %>
+</table>

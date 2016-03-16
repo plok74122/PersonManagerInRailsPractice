@@ -9,7 +9,6 @@
             <%= f.label :group_id, "班別" %><br/>
             <%= f.select :group_id , Group.all.collect {|g| [g.grouptype , g.id] } ,{:selected => '', include_blank: true }, {'class' => 'form-control'}%>
 
-
             <%= f.label :start, "課程起始時間" %>
             <%= f.text_field :start,'class' => 'form-control' %>
 

@@ -2,7 +2,6 @@ class CheckInListController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @check_in_list = Course.all
   end
   def check_in
     # 查出該課程的資料
