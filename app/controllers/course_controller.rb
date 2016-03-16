@@ -3,8 +3,8 @@ class CourseController < ApplicationController
   before_action :set_course, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @course = current_user.group.courses.show_can_check_in_course.includes(:group)
-    # @course = Course.show_can_check_in_course.includes(:group)
+    # @course = current_user.group.courses.show_can_check_in_course.includes(:group)
+    @course = current_user.group_of_courses.show_can_check_in_course.includes(:group)
   end
 
   def create
