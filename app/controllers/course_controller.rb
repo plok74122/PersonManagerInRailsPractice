@@ -36,21 +36,25 @@ class CourseController < ApplicationController
 
   def dashboard
 
-    @all_users_should_check_in_collection = @course.group.users
-    @all_check_in_users_collection = @course.check_in_lists
+    @already_check_in_users = Course.first.group.users.where(id: CheckInList.where(course: @course).pluck(:user_id)).includes(:check_in_lists)
 
-    @all_check_in_users_id = Array.new
-    @all_check_in_users_time = Array.new
-    @all_check_in_users_collection.each do |all_check_in_users|
-      @all_check_in_users_id.push(all_check_in_users.user_id)
-      @all_check_in_users_time.push(all_check_in_users.created_at)
-    end
-    @all_check_in_users_id_hash = Hash[@all_check_in_users_id.map.with_index.to_a]
+    @not_check_in_users = Course.first.group.users.where.not(id: CheckInList.where(course: @course).pluck(:user_id))
 
-    @all_users_should_check_in = Array.new
-    @all_users_should_check_in_collection.each do |all_users_should_check_in|
-      @all_users_should_check_in.push(all_users_should_check_in)
-    end
+    # @all_users_should_check_in_collection = @course.group.users
+    # @all_check_in_users_collection = @course.check_in_lists
+    #
+    # @all_check_in_users_id = Array.new
+    # @all_check_in_users_time = Array.new
+    # @all_check_in_users_collection.each do |all_check_in_users|
+    #   @all_check_in_users_id.push(all_check_in_users.user_id)
+    #   @all_check_in_users_time.push(all_check_in_users.created_at)
+    # end
+    # @all_check_in_users_id_hash = Hash[@all_check_in_users_id.map.with_index.to_a]
+    #
+    # @all_users_should_check_in = Array.new
+    # @all_users_should_check_in_collection.each do |all_users_should_check_in|
+    #   @all_users_should_check_in.push(all_users_should_check_in)
+    # end
   end
 
   private

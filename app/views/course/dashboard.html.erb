@@ -1,15 +1,17 @@
 <table class="table table-striped">
   <th>人名</th>
-  <th>簽到時間</th>
-  <% @all_users_should_check_in.each do |all_users_show_check_in| %>
+  <th>狀態</th>
+  <% @already_check_in_users.each do |already_check_in_users| %>
       <tr>
-        <td><%= all_users_show_check_in.username %></td>
-        <% if @all_check_in_users_id_hash[all_users_show_check_in.id] == nil %>
-            <td>未簽到</td>
-        <% else %>
-            <td><%= @all_check_in_users_time[@all_check_in_users_id_hash[all_users_show_check_in.id]] %></td>
-        <% end %>
+        <td><%= already_check_in_users.username %></td>
+        <td><p>Success</p></td>
       </tr>
-
   <% end %>
+  <% @not_check_in_users.each do |not_check_in_users| %>
+      <tr>
+        <td><%= not_check_in_users.username %></td>
+        <td><p>未簽到</p></td>
+      </tr>
+  <% end %>
+
 </table>
