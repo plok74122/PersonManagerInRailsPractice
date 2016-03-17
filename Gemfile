@@ -41,6 +41,8 @@ gem 'jquery-ui-rails'
 gem 'rollbar', '~> 2.8.3'
 # 排成套件
 
+# devise view套件
+gem 'devise-bootstrap-views'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
