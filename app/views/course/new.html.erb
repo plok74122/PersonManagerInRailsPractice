@@ -1,27 +1,39 @@
-<div class="container">
-  <%= form_for @course, :method => 'post' , :url => course_index_path do |f| %>
-      <div class="row">
-        <div class='col-sm-6'>
-          <div class="form-group">
-            <%= f.label :course_name, "課程名稱" %>
-            <%= f.text_field :course_name, 'class' => 'form-control' %>
+<div class="panel panel-default devise-bs">
+  <div class="panel-heading">
+    <h4><%= t('.sign_up', :default => "新增課程") %></h4>
+  </div>
+  <div class="panel-body">
+    <%= form_for @course, :method => 'post', :url => course_index_path do |f| %>
+        <div class="form-group">
+          <%= f.label :course_name, "課程名稱" %>
+          <%= f.text_field :course_name, 'class' => 'form-control' %>
+        </div>
 
-            <%= f.label :group_id, "班別" %><br/>
-            <%= f.select :group_id , Group.all.collect {|g| [g.grouptype , g.id] } ,{:selected => '', include_blank: true }, {'class' => 'form-control'}%>
+        <div class="form-group">
+          <%= f.label :group_id, "班別" %><br/>
+          <%= f.select :group_id, Group.all.collect { |g| [g.grouptype, g.id] }, {:selected => '', include_blank: true}, {'class' => 'form-control'} %>
+        </div>
 
-            <%= f.label :start, "課程起始時間" %>
-            <%= f.text_field :start,'class' => 'form-control' %>
+        <div class="form-group">
+          <%= f.label :start, "課程起始時間" %>
+          <%= f.text_field :start, 'class' => 'form-control' %>
+        </div>
 
-            <%= f.label :end, "課程結束時間" %>
-            <%= f.text_field :end ,'class' => 'form-control'%>
+        <div class="form-group">
+          <%= f.label :end, "課程結束時間" %>
+          <%= f.text_field :end, 'class' => 'form-control' %>
+        </div>
 
-            <%= f.submit "Create" , 'class' => 'btn btn-danger' %>
-  <% end %>
+        <div class="form-group">
+          <%= f.submit "Create", 'class' => 'btn btn-danger' %>
+        </div>
+    <% end %>
+  </div>
+</div>
 
-
-  <script type="text/javascript">
-    $(function () {
-      $('#course_start').datetimepicker({format: 'YYYY/MM/DD HH:mm:ss'});
-      $('#course_end').datetimepicker({format: 'YYYY/MM/DD HH:mm:ss'});
-    });
-  </script>
+<script type="text/javascript">
+  $(function () {
+    $('#course_start').datetimepicker({format: 'YYYY/MM/DD HH:mm:ss'});
+    $('#course_end').datetimepicker({format: 'YYYY/MM/DD HH:mm:ss'});
+  });
+</script>

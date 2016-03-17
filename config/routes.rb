@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
   root :to => "welcome#index"
+  namespace :course do
+    get :check_in_course
+  end
   resources :course do
     get :dashboard
   end
+
   resources :check_in_list do
     post :check_in
   end

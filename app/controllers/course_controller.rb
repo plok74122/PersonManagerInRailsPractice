@@ -3,8 +3,7 @@ class CourseController < ApplicationController
   before_action :set_course, :only => [:show, :edit, :update, :destroy,:dashboard]
 
   def index
-    @course = current_user.group.courses.show_can_check_in_course.includes(:group , :check_in_lists)
-    # @course = current_user.group_of_courses.show_can_check_in_course.includes(:group,:check_in_lists)
+    @course = current_user.group.courses.order('start DESC').page(params[:page]).per(10)
   end
 
   def create
@@ -55,6 +54,10 @@ class CourseController < ApplicationController
     # @all_users_should_check_in_collection.each do |all_users_should_check_in|
     #   @all_users_should_check_in.push(all_users_should_check_in)
     # end
+  end
+
+  def check_in_course
+    @course = current_user.group.courses.show_can_check_in_course.order('start DESC').includes(:group , :check_in_lists).page(params[:page]).per(10)
   end
 
   private

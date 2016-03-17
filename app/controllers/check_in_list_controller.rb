@@ -6,7 +6,7 @@ class CheckInListController < ApplicationController
   def check_in
     # 查出該課程的資料
     # 確認該課程是否重複點名
-    check_in_exist = current_user.course.where('course_id = ?',course_params[:id])
+    check_in_exist = current_user.courses.where('course_id = ?',course_params[:id])
     # flash[:notice] = check_in_exist.method
     if check_in_exist.size == 1
       flash[:notice] = '已經Check In過摟～'

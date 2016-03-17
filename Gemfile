@@ -23,6 +23,9 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# 分頁工具
+gem "kaminari"
+
 # 認證系統
 gem 'devise'
 gem 'pundit'

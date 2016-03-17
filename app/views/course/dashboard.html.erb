@@ -1,3 +1,8 @@
+<div class="panel panel-default devise-bs">
+  <div class="panel-heading">
+    <h4><%= "到課狀況" %></h4>
+  </div>
+  <div class="panel-body">
 <table class="table table-striped">
   <th>人名</th>
   <th>狀態</th>
@@ -15,3 +20,6 @@
   <% end %>
 
 </table>
+<%= link_to '返回課程清單', course_index_path , 'class' => 'btn btn-success'  %>
+<%= link_to '報到', course_check_in_course_path , 'class' => 'btn btn-default'%>
+</div>

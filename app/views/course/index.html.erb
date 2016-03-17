@@ -1,38 +1,35 @@
-
+<div class="panel panel-default devise-bs">
+  <div class="panel-heading">
+    <h4><%= "課程列表" %></h4>
+  </div>
+  <div class="panel-body">
   <table class="table table-striped">
     <th>名稱</th>
     <th>類型</th>
     <th>開始時間</th>
     <th>結束時間</th>
-    <th>Query</th>
-    <th>Delete</th>
-    <th>CheckIn</th>
+    <th>到課狀況</th>
+    <th>刪除課程</th>
     <% @course.each do |course| %>
         <tr>
           <td><%= course.course_name %></td>
           <td><%= course.group.grouptype %></td>
           <td><%= course.start %></td>
           <td><%= course.end %></td>
-          <td><%= link_to '查詢人員', course_dashboard_path(course) , 'class'=>'btn btn-default'%></td>
+          <td><%= link_to '查詢', course_dashboard_path(course) , 'class'=>'btn btn-default'%></td>
           <td>
             <%= form_for course, :method => :delete , :url => course_path(course)  do |f| %>
                 <%= f.hidden_field :id %>
                 <%= f.submit "Delete" , 'class' => 'btn btn-danger' , :data => { :confirm => "Are you sure?" }%>
             <% end %>
           </td>
-          <td>
-            <% if course.check_in_lists.first%>
-                <p>已簽到</p>
-            <%else%>
-              <%= form_for course, :method => :post , :url => check_in_list_check_in_path(course)  do |f| %>
-                  <%= f.hidden_field :id %>
-                  <%= f.submit "Check In" , 'class' => 'btn btn-danger' , :data => { :confirm => "Are you want to Check In?" }%>
-              <% end %>
-            <% end %>
           </td>
         </tr>
   <% end %>
   </table>
-  <%= link_to 'New Course', new_course_path , 'class' => 'btn btn-success'  %>
-
+  <%= paginate @course %>
+  <br />
+  <%= link_to '報到', course_check_in_course_path , 'class' => 'btn btn-default'  %>
+  <%= link_to '新增課程', new_course_path , 'class' => 'btn btn-success'  %>
+</div>
 
